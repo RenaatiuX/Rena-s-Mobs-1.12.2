@@ -4,6 +4,8 @@ import RenaMobs.Main;
 import RenaMobs.entity.EntityAmmyt;
 import RenaMobs.entity.EntityAngler;
 import RenaMobs.util.Reference;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
@@ -25,7 +27,9 @@ public class EntityInit
 
 			//spawns
 			EntityRegistry.addSpawn(EntityAmmyt.class, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.DESERT, Biomes.DESERT_HILLS);
+			
 			EntityRegistry.addSpawn(EntityAngler.class, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.OCEAN, Biomes.DEEP_OCEAN);
+			EntitySpawnPlacementRegistry.setPlacementType(EntityAngler.class, EntityLiving.SpawnPlacementType.IN_WATER);
 			
 			
 			
