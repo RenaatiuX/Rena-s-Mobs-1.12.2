@@ -8,6 +8,8 @@ public class Reference {
 	public static final String CLIENT = "RenaMobs.proxy.ClientProxy";
 	public static final String COMMON = "RenaMobs.proxy.CommonProxy";
 	
-	public static final int ENTITY_AMMYT = 50;
+	public static final int ENTITY_AMMYT = 1;
+	public static final int ENTITY_ANGLER = 2;
+	public static final int ENTITY_FENIX = 3;
 
 }

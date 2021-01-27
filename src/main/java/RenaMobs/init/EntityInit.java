@@ -3,6 +3,7 @@ package RenaMobs.init;
 import RenaMobs.Main;
 import RenaMobs.entity.EntityAmmyt;
 import RenaMobs.entity.EntityAngler;
+import RenaMobs.entity.EntityFenix;
 import RenaMobs.util.Reference;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -24,6 +25,7 @@ public class EntityInit
 			EntityRegistry.registerModEntity(registryName, entityClass, entityName, id, mod, trackingRange, updateFrequency, sendsVelocityUpdates, eggPrimary, eggSecondary);*/
 			EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, "ammyt"),EntityAmmyt.class, "ammyt", id++, Main.instance, 1024, 1, true, 11437146, 000000);
 			EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, "angler"),EntityAngler.class, "angler", id++, Main.instance, 1024, 1, true, 11437146, 000000);
+			EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, "fenix"),EntityFenix.class, "fenix", id++, Main.instance, 1024, 1, true, 11437146, 000000);
 
 			//spawns
 			EntityRegistry.addSpawn(EntityAmmyt.class, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.DESERT, Biomes.DESERT_HILLS);
