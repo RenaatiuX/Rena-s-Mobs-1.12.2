@@ -33,6 +33,9 @@ public class EntityInit
 			EntityRegistry.addSpawn(EntityAngler.class, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.OCEAN, Biomes.DEEP_OCEAN);
 			EntitySpawnPlacementRegistry.setPlacementType(EntityAngler.class, EntityLiving.SpawnPlacementType.IN_WATER);
 			
+			EntityRegistry.addSpawn(EntityFenix.class, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.EXTREME_HILLS, Biomes.TAIGA_HILLS);
+			EntitySpawnPlacementRegistry.setPlacementType(EntityFenix.class, EntityLiving.SpawnPlacementType.IN_AIR);
+			
 			
 			
 		}	

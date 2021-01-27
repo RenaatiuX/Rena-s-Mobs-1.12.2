@@ -4,20 +4,19 @@ package RenaMobs.entity;
 
 import java.util.Random;
 
+import RenaMobs.entity.ai.FenixAIAttackMelee;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityMoveHelper;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -26,7 +25,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 
-public class EntityFenix extends EntityCreature implements IMob{
+public class EntityFenix extends EntityCreature{
+	
 
 	public EntityFenix(World worldIn) {
 		super(worldIn);
@@ -45,13 +45,16 @@ public class EntityFenix extends EntityCreature implements IMob{
 	protected void initEntityAI()
     {
 		
-		this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
+		this.tasks.addTask(3, new FenixAIAttackMelee(this, 0.9D, true));
         this.tasks.addTask(5, new EntityFenix.AIRandomFly(this));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityFenix.AILookAround(this));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 12.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this,true));
+        
+        
+        
         
         
         
@@ -288,9 +291,16 @@ public class EntityFenix extends EntityCreature implements IMob{
     }
 	
 	
-
-
-
 	
+	 
+	 
+	 public void fall(float distance, float damageMultiplier)
+	    {
+	    }
+
+	    protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos)
+	    {
+	    }
+
 	
 }
