@@ -28,12 +28,12 @@ public class EntityInit
 			EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, "fenix"),EntityFenix.class, "fenix", id++, Main.instance, 1024, 1, true, 11437146, 000000);
 
 			//spawns
-			EntityRegistry.addSpawn(EntityAmmyt.class, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.DESERT, Biomes.DESERT_HILLS);
+			EntityRegistry.addSpawn(EntityAmmyt.class, 20, 1, 2, EnumCreatureType.MONSTER, Biomes.DESERT, Biomes.DESERT_HILLS);
 			
-			EntityRegistry.addSpawn(EntityAngler.class, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.OCEAN, Biomes.DEEP_OCEAN);
+			EntityRegistry.addSpawn(EntityAngler.class, 20, 1, 2, EnumCreatureType.MONSTER, Biomes.OCEAN, Biomes.DEEP_OCEAN);
 			EntitySpawnPlacementRegistry.setPlacementType(EntityAngler.class, EntityLiving.SpawnPlacementType.IN_WATER);
 			
-			EntityRegistry.addSpawn(EntityFenix.class, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.EXTREME_HILLS, Biomes.TAIGA_HILLS);
+			EntityRegistry.addSpawn(EntityFenix.class, 20, 1, 2, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.TAIGA_HILLS);
 			EntitySpawnPlacementRegistry.setPlacementType(EntityFenix.class, EntityLiving.SpawnPlacementType.IN_AIR);
 			
 			

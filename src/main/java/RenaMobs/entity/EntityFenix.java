@@ -8,7 +8,9 @@ import RenaMobs.entity.ai.FenixAIAttackMelee;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -26,13 +28,12 @@ import net.minecraft.world.World;
 
 
 public class EntityFenix extends EntityCreature{
-	
+	private boolean isOverAir;
 
 	public EntityFenix(World worldIn) {
 		super(worldIn);
 		this.setSize(1.0F, 1.0F);
         this.isImmuneToFire = true;
-        this.experienceValue = 5;
         this.moveHelper = new EntityFenix.FenixMoveHelper(this);
 	}
 	
@@ -40,6 +41,24 @@ public class EntityFenix extends EntityCreature{
     {
         return this.height * 0.8F;
     }
+	
+	 protected boolean isOverAir() {
+	        return isOverAir;
+	    }
+
+	    @SuppressWarnings("unused")
+		private boolean isOverAirLogic() {
+	        return world.isAirBlock(new BlockPos(this.posX, this.getEntityBoundingBox().minY - 1, this.posZ));
+	    }
+	    
+	    protected int getExperiencePoints(EntityPlayer player) {
+	        return 10;
+	    }
+	    
+	    @Override
+	    protected boolean canDespawn() {
+	        return false;
+	    }
 	
 	
 	protected void initEntityAI()
@@ -53,11 +72,6 @@ public class EntityFenix extends EntityCreature{
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this,true));
         
-        
-        
-        
-        
-        
     }
 	
 	protected void applyEntityAttributes() {
@@ -67,6 +81,8 @@ public class EntityFenix extends EntityCreature{
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16.0D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
+	
+	
 	
 	
 	 static class AILookAround extends EntityAIBase
@@ -289,18 +305,28 @@ public class EntityFenix extends EntityCreature{
 
         return flag;
     }
-	
-	
-	
+
+	@Override
+	public boolean getCanSpawnHere() {
+		
+		return this.posY > 120;
+	}
 	 
 	 
-	 public void fall(float distance, float damageMultiplier)
+	public void fall(float distance, float damageMultiplier)
 	    {
 	    }
 
-	    protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos)
+	protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos)
 	    {
 	    }
-
+	    
+	@Override
+	public boolean isCreatureType(EnumCreatureType type, boolean forSpawnCount) {
+		if (forSpawnCount && (this instanceof EntityLiving) && ((EntityLiving)this).isNoDespawnRequired()) return false;
+	        return type == EnumCreatureType.CREATURE;
+	    }
+		
+	
 	
 }
