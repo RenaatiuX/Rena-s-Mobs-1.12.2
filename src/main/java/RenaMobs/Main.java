@@ -1,8 +1,10 @@
 package RenaMobs;
 
 import RenaMobs.proxy.CommonProxy;
+import RenaMobs.tabs.RenaMobTab;
 import RenaMobs.util.Reference;
 import RenaMobs.util.handler.RegistryHandler;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -12,7 +14,10 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
-public class Main {
+public class Main 
+{
+	
+	public static final CreativeTabs RENAMOBTAB = new RenaMobTab("renamobtab");
 	
 	@Instance
 	public static Main instance;
